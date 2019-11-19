@@ -42,6 +42,11 @@
 		</property>
 	</bean>
 	
+	<!-- 配置HiberanteTemplate对象 -->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	
 	<!-- 配置Hibernate的事务管理器 -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"/>
