@@ -39,6 +39,9 @@ public class UsersDaoImpl  implements UsersDao {
 		return this.hibernateTemplate.get(Users.class, userid);
 	}
 
+	/**
+	 * HQL
+	 */
 	@Override
 	public List<Users> selectUserByName(String username) {
 		
@@ -50,6 +53,17 @@ public class UsersDaoImpl  implements UsersDao {
 		Query queryTemp = query.setString("abc",username);
 		
 		return queryTemp.list();
+	}
+	
+	/**
+	 * SQL
+	 */
+	@Override
+	public List<Users> selectUserByNameUseSQL(String username) {
+		Session session = this.hibernateTemplate.getSessionFactory().getCurrentSession();
+		Query query = session.createSQLQuery("select * from t_users where username = ?").
+				addEntity(Users.class).setString(0, username);
+		return query.list();
 	}
 
 }

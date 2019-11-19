@@ -80,4 +80,16 @@ public class UsersDaoImplTest {
 			System.out.println(users);
 		}
 	}
+	
+	/**
+	 * SQL测试
+	 */
+	@Test
+	@Transactional
+	public void testSelectUserByNameUseSQL(){
+		List<Users> list = this.usersDao.selectUserByNameUseSQL("李四");
+		for (Users users : list) {
+			System.out.println(users);
+		}
+	}
 }

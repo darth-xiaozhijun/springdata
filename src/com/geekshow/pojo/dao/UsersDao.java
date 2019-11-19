@@ -11,5 +11,17 @@ public interface UsersDao {
 	void deleteUsers(Users users);
 	Users selectUsersById(Integer userid);
 	
+	/**
+	 * HQL
+	 * @param username
+	 * @return
+	 */
 	List<Users> selectUserByName(String username);
+	
+	/**
+	 * SQL
+	 * @param username
+	 * @return
+	 */
+	List<Users> selectUserByNameUseSQL(String username);
 }
