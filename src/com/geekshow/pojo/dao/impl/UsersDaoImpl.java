@@ -2,8 +2,10 @@ package com.geekshow.pojo.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
@@ -64,6 +66,18 @@ public class UsersDaoImpl  implements UsersDao {
 		Query query = session.createSQLQuery("select * from t_users where username = ?").
 				addEntity(Users.class).setString(0, username);
 		return query.list();
+	}
+	
+	/**
+	 * QBC
+	 */
+	@Override
+	public List<Users> selectUserByNameUseCriteria(String username) {
+		Session session = this.hibernateTemplate.getSessionFactory().getCurrentSession();
+		//sql:select * from t_users where username = 张三
+		Criteria c = session.createCriteria(Users.class);
+		c.add(Restrictions.eq("username", username));
+		return c.list();
 	}
 
 }

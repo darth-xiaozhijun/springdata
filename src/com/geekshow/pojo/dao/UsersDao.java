@@ -24,4 +24,11 @@ public interface UsersDao {
 	 * @return
 	 */
 	List<Users> selectUserByNameUseSQL(String username);
+	
+	/**
+	 * QBC
+	 * @param username
+	 * @return
+	 */
+	List<Users> selectUserByNameUseCriteria(String username);
 }

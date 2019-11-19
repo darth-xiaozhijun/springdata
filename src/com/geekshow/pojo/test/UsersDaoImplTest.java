@@ -92,4 +92,16 @@ public class UsersDaoImplTest {
 			System.out.println(users);
 		}
 	}
+	
+	/**
+	 * Criteria测试
+	 */
+	@Test
+	@Transactional
+	public void testSelectUserByNameUseCriteria(){
+		List<Users> list = this.usersDao.selectUserByNameUseCriteria("李四");
+		for (Users users : list) {
+			System.out.println(users);
+		}
+	}
 }
