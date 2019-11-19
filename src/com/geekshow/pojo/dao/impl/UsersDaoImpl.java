@@ -41,12 +41,14 @@ public class UsersDaoImpl  implements UsersDao {
 
 	@Override
 	public List<Users> selectUserByName(String username) {
+		
 		//getCurrentSession:当前session必须要有事务边界，且只能处理唯一的一个事务。当事务提交或者回滚后session自动失效
 		//openSession:每次都会打开一个新的session.加入每次使用多次。则获得的是不同session对象。使用完毕后我们需要手动的调用colse方法关闭session
-	Session session = this.hibernateTemplate.getSessionFactory().getCurrentSession();
-	//sql:select * from t_users where username = 
-	Query query = session.createQuery("from Users where username = :abc");
-	Query queryTemp = query.setString("abc",username);
+		Session session = this.hibernateTemplate.getSessionFactory().getCurrentSession();
+		//sql:select * from t_users where username = 
+		Query query = session.createQuery("from Users where username = :abc");
+		Query queryTemp = query.setString("abc",username);
+		
 		return queryTemp.list();
 	}
 

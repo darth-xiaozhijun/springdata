@@ -75,7 +75,7 @@ public class UsersDaoImplTest {
 	@Test
 	@Transactional
 	public void testSelectUserByName(){
-		List<Users> list = this.usersDao.selectUserByName("张三");
+		List<Users> list = this.usersDao.selectUserByName("李四");
 		for (Users users : list) {
 			System.out.println(users);
 		}
